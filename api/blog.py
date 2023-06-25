@@ -1,12 +1,16 @@
+from fastapi import HTTPException, status
+
+
 from sqlalchemy.orm import Session
+from sqlalchemy import desc
+
 from schemas import schemas
 from models import models
-from fastapi import HTTPException, status
 
 
 # Get All Posts
 def get_all(db: Session, skip: int = 0, limit: int = 100):
-    posts = db.query(models.Post).offset(skip).limit(limit).all()
+    posts = db.query(models.Post).order_by(desc(models.Post.date)).offset(skip).limit(limit).all()
     return posts
 
 

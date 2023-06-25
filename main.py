@@ -12,7 +12,7 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI(
     title="NovaAPI",
     description="API For Personal Blog",
-    version="1.1.0",
+    version="1.2.0",
 
     docs_url=None if DEBUG == False else '/docs',
     redoc_url=None if DEBUG == False else '/redoc'
